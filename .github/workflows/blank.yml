@@ -1,0 +1,10 @@
+python3 -m pip install -r video_game/requirements.txt
+python3 video_game/main.py
+- name: Download a Build Artifact
+  uses: actions/download-artifact@v3.1.0
+  with:
+    # Artifact name
+    name: # optional
+    # Destination path
+    path: # optional
+          
