@@ -1,0 +1,233 @@
+:root {
+  --bg-deep: #031a2b;
+  --bg-mid: #0a3552;
+  --bg-light: #1b607f;
+  --ink: #f3fff7;
+  --accent: #ffb703;
+  --danger: #ff5f5f;
+  --mint: #79f2d0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Space Grotesk", "Segoe UI", sans-serif;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at 15% 20%, rgba(121, 242, 208, 0.16), transparent 40%),
+    radial-gradient(circle at 82% 70%, rgba(255, 183, 3, 0.2), transparent 45%),
+    linear-gradient(160deg, var(--bg-deep), var(--bg-mid) 55%, var(--bg-light));
+  overflow-x: hidden;
+}
+
+.bg-shapes {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.shape {
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(0.4px);
+  opacity: 0.3;
+  animation: float 11s ease-in-out infinite;
+}
+
+.shape-1 {
+  width: 280px;
+  height: 280px;
+  left: -40px;
+  bottom: 12%;
+  background: linear-gradient(45deg, rgba(255, 183, 3, 0.3), rgba(121, 242, 208, 0.15));
+}
+
+.shape-2 {
+  width: 220px;
+  height: 220px;
+  right: 8%;
+  top: 8%;
+  background: linear-gradient(45deg, rgba(255, 95, 95, 0.23), rgba(121, 242, 208, 0.2));
+  animation-delay: 1.8s;
+}
+
+.shape-3 {
+  width: 340px;
+  height: 340px;
+  right: -80px;
+  bottom: -100px;
+  background: linear-gradient(45deg, rgba(3, 26, 43, 0.2), rgba(255, 183, 3, 0.22));
+  animation-delay: 0.7s;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0) translateX(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-18px) translateX(8px) rotate(2.5deg);
+  }
+}
+
+.game-shell {
+  position: relative;
+  z-index: 1;
+  width: min(1100px, 96vw);
+  margin: 2rem auto;
+  padding: 1.2rem;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.9rem;
+}
+
+.topbar h1 {
+  margin: 0;
+  font-family: "Bungee", sans-serif;
+  letter-spacing: 0.08em;
+  font-size: clamp(1.4rem, 2.8vw, 2.2rem);
+  text-shadow: 0 4px 0 rgba(0, 0, 0, 0.25);
+}
+
+.stats {
+  display: flex;
+  gap: 0.65rem;
+  flex-wrap: wrap;
+}
+
+.stat {
+  min-width: 92px;
+  padding: 0.35rem 0.7rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(3, 26, 43, 0.4);
+  backdrop-filter: blur(3px);
+}
+
+.label {
+  display: block;
+  font-size: 0.72rem;
+  opacity: 0.8;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+#score,
+#high-score,
+#oxygen {
+  font-weight: 700;
+}
+
+.arena-wrap {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
+}
+
+#game-canvas {
+  width: 100%;
+  height: auto;
+  display: block;
+  background: linear-gradient(180deg, #57bfd5 0%, #2f89b6 40%, #124f73 100%);
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(0, 14, 22, 0.42);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+.overlay.visible {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.panel {
+  width: min(540px, 88vw);
+  padding: 1.1rem 1.3rem 1.2rem;
+  border-radius: 16px;
+  background: rgba(1, 18, 29, 0.86);
+  border: 1px solid rgba(121, 242, 208, 0.35);
+  text-align: center;
+  animation: rise 0.36s ease;
+}
+
+@keyframes rise {
+  from {
+    transform: translateY(8px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.panel h2 {
+  margin: 0 0 0.5rem;
+  font-family: "Bungee", sans-serif;
+  letter-spacing: 0.04em;
+}
+
+.panel p {
+  margin: 0.45rem 0;
+}
+
+#start-btn {
+  margin-top: 0.65rem;
+  border: 0;
+  border-radius: 12px;
+  padding: 0.65rem 1rem;
+  font: inherit;
+  font-weight: 700;
+  background: linear-gradient(120deg, var(--accent), #ffcc4d);
+  color: #09202f;
+  cursor: pointer;
+}
+
+#start-btn:hover {
+  filter: brightness(1.06);
+  transform: translateY(-1px);
+}
+
+.controls {
+  opacity: 0.8;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 760px) {
+  .game-shell {
+    margin: 1rem auto 1.4rem;
+    padding: 0.6rem;
+  }
+
+  .topbar {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .stats {
+    width: 100%;
+  }
+
+  .stat {
+    flex: 1;
+  }
+}

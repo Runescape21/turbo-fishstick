@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Turbo Fishstick</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bungee:wght@400&family=Space+Grotesk:wght@400;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="bg-shapes" aria-hidden="true">
+    <span class="shape shape-1"></span>
+    <span class="shape shape-2"></span>
+    <span class="shape shape-3"></span>
+  </div>
+
+  <main class="game-shell">
+    <header class="topbar">
+      <h1>TURBO FISHSTICK</h1>
+      <div class="stats">
+        <div class="stat">
+          <span class="label">Score</span>
+          <span id="score">0</span>
+        </div>
+        <div class="stat">
+          <span class="label">High</span>
+          <span id="high-score">0</span>
+        </div>
+        <div class="stat">
+          <span class="label">Oxygen</span>
+          <span id="oxygen">100%</span>
+        </div>
+      </div>
+    </header>
+
+    <section class="arena-wrap">
+      <canvas id="game-canvas" width="960" height="540" aria-label="Turbo Fishstick game"></canvas>
+
+      <div id="overlay" class="overlay visible">
+        <div class="panel" id="overlay-panel">
+          <h2 id="overlay-title">Dive In</h2>
+          <p id="overlay-text">Collect bubbles, dodge hazards, and survive the current.</p>
+          <button id="start-btn" type="button">Start Game</button>
+          <p class="controls">Move: WASD / Arrows | Dash: Shift</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="game.js"></script>
+</body>
+</html>
